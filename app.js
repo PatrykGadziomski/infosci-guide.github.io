@@ -1,5 +1,5 @@
 // ▼ Hier dein GitHub-Repository eintragen (Benutzer/Repo)
-const GITHUB_REPO = 'OWNER/REPO';
+const GITHUB_REPO = 'PatrykGadziomski/infosci-guide.github.io';
 
 const SQLJS_BASE = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
 const LEVELS = { 'B.A.': 'Bachelor', 'B.Sc.': 'Bachelor', 'M.A.': 'Master', 'M.Sc.': 'Master', 'M.LIS': 'Master', 'Zertifikat': 'Weiterbildung' };
