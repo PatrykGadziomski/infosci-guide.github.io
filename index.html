@@ -319,56 +319,6 @@
   .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--cream); padding: 14px 24px; font-size: 13px; z-index: 1200; max-width: 90vw; display: none; }
   .toast.show { display: block; }
 
-  /* ── SPECIALIZATIONS ────────────────────────────── */
-  .spec-section { margin-bottom: 80px; }
-
-  .spec-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-
-  .spec-card {
-    padding: 28px 24px;
-    border: 1px solid rgba(26,20,9,0.1);
-    position: relative;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .spec-card:hover {
-    background: var(--ink);
-    color: var(--cream);
-    border-color: var(--ink);
-  }
-  .spec-card:hover .spec-icon { opacity: 0.15; }
-  .spec-card:hover .spec-name { color: var(--cream); }
-  .spec-card:hover .spec-count { color: var(--gold); }
-
-  .spec-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-    display: block;
-    opacity: 0.3;
-    transition: opacity 0.3s;
-  }
-
-  .spec-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--ink);
-    transition: color 0.3s;
-  }
-
-  .spec-count {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--slate);
-    opacity: 0.5;
-    transition: color 0.3s, opacity 0.3s;
-  }
-
   /* ── FOOTER ─────────────────────────────────────── */
   footer {
     background: var(--ink);
@@ -407,7 +357,6 @@
 
   @media (max-width: 1100px) {
     main, .filter-section, footer { padding-left: 40px; padding-right: 40px; }
-    .spec-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; }
@@ -474,57 +423,6 @@
       <button class="add-btn" id="add-open" type="button">+ Studiengang hinzufügen</button>
     </div>
     <div class="prog-grid" id="programs"><p class="empty">Lade Studiengänge …</p></div>
-  </div>
-
-  <!-- SPEZIALISIERUNGEN -->
-  <div class="spec-section">
-    <div class="section-header">
-      <h2 class="section-title">Spezialisierungsrichtungen</h2>
-      <div class="section-rule"></div>
-      <span class="section-count">8 Schwerpunkte</span>
-    </div>
-    <div class="spec-grid">
-      <div class="spec-card">
-        <span class="spec-icon">📚</span>
-        <div class="spec-name">Wissenschaftliche Bibliotheken</div>
-        <div class="spec-count">Universitäts- & Nationalbibliotheken</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-icon">🏘️</span>
-        <div class="spec-name">Öffentliche Bibliotheken</div>
-        <div class="spec-count">Stadtbibliotheken & Lesesäle</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-icon">💻</span>
-        <div class="spec-name">Digitale Bibliothek</div>
-        <div class="spec-count">E-Ressourcen & Open Access</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-icon">🗄️</span>
-        <div class="spec-name">Archivwissenschaft</div>
-        <div class="spec-count">Staatliche & Kommunalarchive</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-icon">🔍</span>
-        <div class="spec-name">Informationsmanagement</div>
-        <div class="spec-count">Knowledge Org. & Retrieval</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-icon">🧒</span>
-        <div class="spec-name">Kinder- & Jugendbibliothek</div>
-        <div class="spec-count">Leseförderung & Medienpädagogik</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-icon">📊</span>
-        <div class="spec-name">Bibliometrie & Forschung</div>
-        <div class="spec-count">Scientometrics & Evaluation</div>
-      </div>
-      <div class="spec-card">
-        <span class="spec-icon">🌐</span>
-        <div class="spec-name">Intl. & Komparative BW</div>
-        <div class="spec-count">UNESCO & IFLA-Netzwerke</div>
-      </div>
-    </div>
   </div>
 
 </main>
@@ -666,7 +564,6 @@
     }), { threshold: 0.1 });
     els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity .5s ease, transform .5s ease'; io.observe(el); });
   }
-  reveal(document.querySelectorAll('.spec-card'));
 
   $('filters').addEventListener('click', e => {
     const b = e.target.closest('.filter-btn'); if (!b) return;
