@@ -5,9 +5,9 @@ on:
 permissions:
   contents: write
   issues: write
+  pages: write
 jobs:
   add:
-    # Läuft nur, wenn ein Maintainer das Label "approved" setzt (Moderation)
     if: github.event.label.name == 'approved'
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +15,7 @@ jobs:
       - name: Eintrag einfügen
         id: insert
         env:
-          ISSUE_BODY: ${{ github.event.issue.body }}   # nur als Env-Variable, nie in die Shell interpolieren
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           set +e
           python3 scripts/add_program.py data/studiengaenge.db > result.txt 2>&1
@@ -28,6 +28,11 @@ jobs:
           git add data/studiengaenge.db
           git commit -m "Studiengang aus Issue #${{ github.event.issue.number }} hinzugefügt"
           git push
+      - name: Pages neu bauen
+        if: steps.insert.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds"
       - name: Issue beantworten
         env:
           GH_TOKEN: ${{ github.token }}
